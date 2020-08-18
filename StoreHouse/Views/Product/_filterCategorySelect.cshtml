@@ -1,0 +1,15 @@
+﻿@model IEnumerable<StoreHouse.Models.Category>
+
+@{
+    
+}
+
+<select name="categoryFilter" class=" border border-primary rounded form-control" id="categoryFilterSelect" style="margin: 15px; width: 10%" onchange="filterByCategory(this)">
+        
+
+    @foreach (var category in Model )
+    {
+        <option value="@category.CategoryID">@category.Name</option>
+    }
+</select>
+

@@ -1,0 +1,42 @@
+﻿
+@model IEnumerable<StoreHouse.Models.Category>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div  class="d-flex flex-row   ">
+    
+        <a class="btn btn-success " id="AddCategory" style="margin: 15px" onclick='return openModal("@Url.Action("SaveCategory")", "New Category");'>
+
+            <i class="fa fa-plus"></i> Add New Category
+        </a>
+    
+
+    
+        <input class="w-25 ml-auto border border-primary rounded" type="text" id="searchCategoryInput" style="margin: 15px" onkeyup="searchCategory(this)" placeholder="search"/>
+
+
+    
+</div >
+
+
+
+
+        <div class="">
+            <div id="CategoryTableData">
+    
+                @{Html.RenderPartial("_CategoryTable", Model);}
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+

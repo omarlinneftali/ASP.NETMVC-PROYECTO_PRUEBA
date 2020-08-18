@@ -1,0 +1,31 @@
+﻿.field-validation-error {
+        color: #e80c4d;
+        font-weight: bold;
+    }
+
+
+    input.input-validation-error {
+        border: 1px solid #e80c4d;
+    }
+
+    table {
+
+        margin: auto;
+        
+    }
+
+.invalid {
+    color: #e80c4d;
+    font-weight: bold;
+
+}
+
+.error {
+    color: #F00;
+    background-color: #FFF;
+
+}
+
+#categoryFilterSelect {
+    width: 15%;
+}

@@ -1,0 +1,76 @@
+﻿@using System.Runtime.Remoting.Messaging
+@using System.Web.Mvc
+@using System.Web.Mvc.Html
+@model StoreHouse.ViewModel.FormProductsViewModel
+
+@{
+    ViewBag.Title = "ProductForm";
+    var action = "SaveProduct";
+    var controller = "Product";
+    Layout = null;
+
+}
+
+
+    <form action="@Url.Action(action,controller)" method="post" id="productForm">
+
+
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Product.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Product.Name, new { htmlAttributes = new { @class = "form-control", name = "Name" } })
+            @Html.ValidationMessageFor(model => model.Product.Name, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Product.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Product.Description, new { htmlAttributes = new { @class = "form-control", name = "Description" } })
+            @Html.ValidationMessageFor(model => model.Product.Description, "", new { @class = "text-danger" })
+
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Product.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Product.Price, new { htmlAttributes = new { @class = "form-control", name = "Price", type="number" } })
+            @Html.ValidationMessageFor(model => model.Product.Price, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Product.Stock, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.EditorFor(model => model.Product.Stock, new { htmlAttributes = new { @class = "form-control", name = "Stock" } })
+            @Html.ValidationMessageFor(model => model.Product.Stock, "", new { @class = "text-danger" })
+        </div>
+        
+        <div class="form-group">
+            @Html.LabelFor(model => model.Product.CategoryID, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.DropDownListFor(model => model.Product.CategoryID,new SelectList(Model.Categories,"CategoryID","Name"),"Select Element",  new { @class = "form-control", name = "CategoryID" } )
+            @Html.ValidationMessageFor(model => model.Product.CategoryID, "", new { @class = "text-danger" })
+        </div>
+
+        @Html.HiddenFor(model => model.Product.ProductID)
+
+        <div class="form-group">
+            <input type="submit" value="Save" class="btn btn-primary" id="productSubmit" />
+            <input type="reset" value="Reset" class="btn btn-secondary" />
+
+
+        </div>
+
+    </form>
+
+
+    <script src="~/Scripts/project/product/productValidation.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+

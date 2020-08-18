@@ -1,0 +1,83 @@
+﻿@model IEnumerable<StoreHouse.Models.Product>
+
+@{
+    var actionSave = "SaveProduct";
+    var actionDelete = "DeleteProduct";
+    var actionDetails = "ProductDetails";
+
+
+    var controller = "Product";
+}
+
+
+    <table class="table  table-bordered table-hover table-striped" id="productTable">
+
+        <thead>
+
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Stock</th>
+                <th>Price</th>
+                <th>Category</th>
+
+
+                <th colspan="3"></th>
+
+
+            </tr>
+
+        </thead>
+        
+
+
+        <tbody>
+
+        @if (Model == null)
+        {
+            <tr ><td colspan="5">No hay Registros</td></tr>
+        }
+
+        else
+        {
+            foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Name</td>
+
+                    <td> @product.Description</td>
+                    <td> @product.Price</td>
+
+                    <td> @product.Stock</td>
+                    <td> @product.Category.Name</td>
+
+
+
+                    <td>
+                        <a class="btn btn-primary border border-primary" href="@Url.Action(actionSave, controller)/@product.ProductID" onclick=' return openModal(this.href, "Update Product")'> <i class="fas fa-edit"></i> </a>
+                    </td>
+
+                    <td>
+                        <a class="btn  btn-danger" href="@Url.Action(actionDelete, controller)/@product.ProductID" onclick=' return deleteProduct(this.href)'> <i class="fas fa-trash-alt"></i> </a>
+                    </td>
+
+                    <td>
+                        <a class="btn  btn-info" href="@Url.Action(actionDetails, controller)/@product.ProductID" onclick=' return openModal(this.href, "Product Details")'> <i class="fas fa-info-circle"></i> </a>
+                    </td>
+
+
+                </tr>
+            }
+        }
+       
+
+        </tbody>
+
+
+    </table>
+
+    
+
+
+
+

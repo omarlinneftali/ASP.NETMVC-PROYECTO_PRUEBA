@@ -1,0 +1,49 @@
+﻿
+@model StoreHouse.ViewModels.ProductIndexViewModel
+
+@{
+    ViewBag.Title = "Index";
+    var action = "SaveProduct";
+}
+
+
+<div  class="d-flex flex-row  ">
+    
+        <a class="btn btn-success m-3" id="AddProduct"  onclick='return openModal("@Url.Action(action)", "New Product");'>
+
+            <i class="fa fa-plus"></i> Add New Product
+        </a>
+    
+    <span class="m-3">Filter by Category</span>
+
+    @{ Html.RenderPartial("_filterCategorySelect", Model.Categories); }
+
+
+    <input class=" ml-auto border border-primary rounded  m-3 " type="text" id="searchProductInput" style="margin: 15px; width: 15%" onkeyup="searchProduct(this)" placeholder="search......"/>
+
+    
+
+
+
+    
+</div >
+
+
+
+
+        <div class="">
+            <div id="ProductTableData">
+    
+                @{ Html.RenderPartial("_ProductTable", Model.Products); }
+            </div>
+
+        </div>
+
+
+
+
+
+
+
+
+
